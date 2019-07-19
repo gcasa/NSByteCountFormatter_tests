@@ -69,6 +69,11 @@ void runTests()
     NSLog(@"%@",output);
     passTest([output isEqualToString: @"1 MB"], @"NSByteCountFormatterCountStyleBinary works");
     
+    output = [NSByteCountFormatter stringFromByteCount:0
+                                            countStyle:NSByteCountFormatterCountStyleBinary];
+    NSLog(@"%@",output);
+    passTest([output isEqualToString: @"Zero KB"], @"NSByteCountFormatterCountStyleBinary works");
+    
     NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:formatter];
     BOOL flag = [data writeToFile:@"output.data" atomically:YES];
